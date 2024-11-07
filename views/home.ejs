@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ligth">
+    <%- include('header') %>
+    <body>
+        <%- include('navbar') %>
+        <div class="container mx-auto">
+            <div class="flex flex-col items-center px-8 mx-80">
+                <% data.forEach((el) => { %>
+                    <div class="card bg-base-00 w-200 shadow-xl mx-auto my-4">
+                        <figure>
+                            <img src="<%= el.imgUrl %>" alt="<%= el.title %>" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <%= el.title %> 
+                                <div class="badge badge-outline accent"><%= el.Tag.name %></div>
+                            </h2>
+                            <div class="chat-header">
+                                <%= el.User.username %>, 
+                                <time class="text-xs opacity-50"><%= el.date %></time>
+                            </div>
+                            <hr>
+                            <p><%= el.content %></p>
+                            <% if(el.User.id == uuid) { %>
+                                <div class="card-actions justify-end">
+                                    <a href="/editPost/<%= el.id %>" class="btn btn-sm btn-outline btn-warning">Edit</a>
+                                    <a href="/deletePost/<%= el.id %>" class="btn btn-sm btn-outline btn-error">Delete</a>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+https://sequelize.org/docs/v6/other-topics/migrations/
+npm install sequelize pg
+npm install --save-dev sequelize-cli
+npx sequelize-cli init
+npx sequelize-cli db:create
+npx sequelize-cli model:generate --name User --attributes username:string,email:string,password:string,role:string
+npx sequelize-cli model:generate --name Tag --attributes name:string
+npx sequelize-cli model:generate --name Post --attributes title:string,content:text,imgUrl:string,role:string
+npx sequelize-cli migration:generate --name relasiPost
+npx sequelize-cli db:migrate
+npx sequelize-cli seed:generate --name user-data
+npx sequelize-cli seed:generate --name tag-data
+npx sequelize-cli db:seed:all
+npm install express ejs
+npm install --save-dev nodemon
